@@ -17,6 +17,8 @@ test("test", async ({ bench }) => {
       subtractTimerOverhead: true,
       retainSamples: true,
       warmup: true,
+      iterations: 128,
+      time: 2000,
     },
   );
 });
