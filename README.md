@@ -1,0 +1,1 @@
+# wasm-gzip-compress
