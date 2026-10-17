@@ -1,7 +1,7 @@
 emcc ./module/gzip.c -o ./dist/gzip.wasm \
   -O3 \
   -sSTANDALONE_WASM=1 \
-  -sEXPORTED_FUNCTIONS='["_gzip_compress","_malloc","_free"]' \
+  -sEXPORTED_FUNCTIONS='["_malloc","_free"]' \
   -sALLOW_MEMORY_GROWTH=1 \
   -sFILESYSTEM=0 \
   -sASSERTIONS=0 \
