@@ -7,7 +7,7 @@ const COMPRESSED_WASM_BASE64 =
 
 const wasmBinaryPromise = uncompress(decodeBase64(COMPRESSED_WASM_BASE64));
 
-const gzip = async (input: ArrayBufferView<ArrayBufferLike>) => {
+const gzip = async (input: AllowSharedBufferSource) => {
   return baseGzip(await wasmBinaryPromise, input);
 };
 

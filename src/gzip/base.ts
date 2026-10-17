@@ -1,15 +1,11 @@
 const baseGzip = async (
   bytes: BufferSource,
-  _input: ArrayBufferView<ArrayBufferLike>,
+  _input: AllowSharedBufferSource,
 ) => {
-  if (!ArrayBuffer.isView(_input)) {
-    throw new TypeError("Expected a TypedArray");
-  }
-  const input = new Uint8Array(
-    _input.buffer,
-    _input.byteOffset,
-    _input.byteLength,
-  );
+  const input =
+    ArrayBuffer.isView(_input) ?
+      new Uint8Array(_input.buffer, _input.byteOffset, _input.byteLength)
+    : new Uint8Array(_input);
 
   const { instance } = await WebAssembly.instantiate(bytes, {
     env: { emscripten_notify_memory_growth() {} },
