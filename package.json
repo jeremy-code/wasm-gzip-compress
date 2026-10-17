@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.ts",
     "compile": "./scripts/compile.sh",
     "bench": "vitest bench --run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest --run"
   },
   "keywords": [],
   "author": "",
