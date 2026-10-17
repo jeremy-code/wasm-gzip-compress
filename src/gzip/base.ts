@@ -26,9 +26,9 @@ const baseGzip = async (
     throw new Error("How did we end up here?");
   }
 
-  const inputPtr = malloc(input.byteLength);
+  const inputPtr: number = malloc(input.byteLength);
   const capacity = input.byteLength + Math.ceil(input.byteLength / 8) + 128;
-  const outputPtr = malloc(capacity);
+  const outputPtr: number = malloc(capacity);
 
   if (!inputPtr || !outputPtr) {
     if (inputPtr) {
