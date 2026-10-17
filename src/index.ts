@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { gzip as compressedGzip } from "./compressed.ts";
+import { gzip as compressedGzip } from "./gzip/compressed.ts";
 // import { gzip as uncompressedGzip } from "./uncompressed.ts";
 
 const bytes = new TextEncoder().encode("Hello world!");

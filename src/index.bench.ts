@@ -2,15 +2,12 @@ import { test } from "vitest";
 
 test("test", async ({ bench }) => {
   await bench.compare(
-    bench("compressed (gzip)", async () => {
-      return await import("./compressed.js").then(({ gzip }) =>
-        gzip(crypto.getRandomValues(new Uint8Array(100))),
-      );
-    }),
-    bench("uncompressed", async () => {
-      return await import("./uncompressed.ts").then(({ gzip }) =>
-        gzip(crypto.getRandomValues(new Uint8Array(100))),
-      );
+    ...["compressed", "uncompressed"].map((val) => {
+      return bench(val, async () => {
+        return await import(`./gzip/${val}.ts`).then(({ gzip }) =>
+          gzip(crypto.getRandomValues(new Uint8Array(100))),
+        );
+      });
     }),
     {
       subtractTimerOverhead: true,
